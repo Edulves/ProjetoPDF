@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblOrigem = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDestino = new System.Windows.Forms.Label();
             this.btnRenomear = new System.Windows.Forms.Button();
             this.btnSeparar = new System.Windows.Forms.Button();
             this.btnJuntar = new System.Windows.Forms.Button();
+            this.openFile = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
-            // label1
+            // lblOrigem
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(133, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Clique para selecionar o arquivo de origem";
+            this.lblOrigem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrigem.Location = new System.Drawing.Point(133, 18);
+            this.lblOrigem.Name = "lblOrigem";
+            this.lblOrigem.Size = new System.Drawing.Size(393, 23);
+            this.lblOrigem.TabIndex = 0;
+            this.lblOrigem.Text = "Clique para selecionar o arquivo de origem";
+            this.lblOrigem.Click += new System.EventHandler(this.lblOrigem_Click);
             // 
             // label3
             // 
@@ -67,15 +70,16 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Destino";
             // 
-            // label4
+            // lblDestino
             // 
-            this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(133, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(393, 24);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Clique para selecionar a pasta de destino";
+            this.lblDestino.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDestino.Location = new System.Drawing.Point(133, 56);
+            this.lblDestino.Name = "lblDestino";
+            this.lblDestino.Size = new System.Drawing.Size(393, 24);
+            this.lblDestino.TabIndex = 5;
+            this.lblDestino.Text = "Clique para selecionar a pasta de destino";
+            this.lblDestino.Click += new System.EventHandler(this.lblDestino_Click);
             // 
             // btnRenomear
             // 
@@ -96,6 +100,7 @@
             this.btnSeparar.TabIndex = 7;
             this.btnSeparar.Text = "Separar";
             this.btnSeparar.UseVisualStyleBackColor = true;
+            this.btnSeparar.Click += new System.EventHandler(this.btnSeparar_Click);
             // 
             // btnJuntar
             // 
@@ -107,6 +112,15 @@
             this.btnJuntar.Text = "Juntar";
             this.btnJuntar.UseVisualStyleBackColor = true;
             // 
+            // openFile
+            // 
+            this.openFile.FileName = "openFileDialog1";
+            this.openFile.Multiselect = true;
+            // 
+            // folderBrowser
+            // 
+            this.folderBrowser.SelectedPath = "C:\\Users\\Familia\\Desktop";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,10 +129,10 @@
             this.Controls.Add(this.btnJuntar);
             this.Controls.Add(this.btnSeparar);
             this.Controls.Add(this.btnRenomear);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblDestino);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblOrigem);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -129,13 +143,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblOrigem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.Button btnRenomear;
         private System.Windows.Forms.Button btnSeparar;
         private System.Windows.Forms.Button btnJuntar;
+        private System.Windows.Forms.OpenFileDialog openFile;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
     }
 }
 

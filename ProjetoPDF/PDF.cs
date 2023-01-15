@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,17 +9,17 @@ namespace ProjetoPDF
 {
     class PDF
     {
-        private List<string> Pedidos;
-        private string pedido;
+        //private List<string> Pedidos;
+        //private string pedido;
 
         public void Renomear()
         {
 
         }
 
-        public void Separar()
+        public void Separar(string origem,string destino)
         {
-            // teste
+            File.Copy(origem, destino);
         }
 
         public void Juntar()
