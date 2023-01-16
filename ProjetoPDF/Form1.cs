@@ -42,8 +42,7 @@ namespace ProjetoPDF
             {
                 try
                 {
-                    pdf.Separar(openFile.FileName, folderBrowser.SelectedPath + @"\" + origem.Name);
-                    MessageBox.Show("Copia efetuada");
+                    pdf.Separar(openFile.FileName, folderBrowser.SelectedPath + @"\" + origem.Name, true);                  
                 }
                 catch (Exception ex)
                 {

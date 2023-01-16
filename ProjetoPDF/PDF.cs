@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProjetoPDF
 {
@@ -14,12 +15,24 @@ namespace ProjetoPDF
 
         public void Renomear()
         {
-
+            
         }
 
-        public void Separar(string origem,string destino)
+        public void Separar(string origem,string destino, bool sobrepor)
         {
-            File.Copy(origem, destino);
+            if (!File.Exists(destino))
+            {
+                File.Copy(origem, destino);
+                MessageBox.Show("Copia efetuada");
+            }
+            else
+            {
+                if (MessageBox.Show("Arquivo já existe! \n Deseja sobrepor?", "Copiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    File.Copy(origem, destino, sobrepor);
+                    MessageBox.Show("Copia efetuada");
+                }
+            }
         }
 
         public void Juntar()
