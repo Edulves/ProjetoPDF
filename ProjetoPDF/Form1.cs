@@ -43,10 +43,11 @@ namespace ProjetoPDF
                 try
                 {
                     pdf.Separar(openFile.FileName, folderBrowser.SelectedPath + @"\" + origem.Name);
+                    MessageBox.Show("Copia efetuada");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
