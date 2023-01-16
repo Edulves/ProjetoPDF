@@ -12,10 +12,23 @@ namespace ProjetoPDF
     {
         //private List<string> Pedidos;
         //private string pedido;
+        string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        public void Renomear()
+        public void Renomear(string diretorio)
         {
-            
+            string[] arquivos = Directory.GetFiles(diretorio);
+            string dirSaida = $"{desktop}\\PDFsRenomeados";
+
+            if (!Directory.Exists(dirSaida))
+            {
+                Directory.CreateDirectory(dirSaida);
+            }
+
+            for (int i = 0; i < arquivos.Length; i++)
+            {
+                FileInfo files = new FileInfo(arquivos[i]);
+                files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name,"teste" + i + ".PDF")));
+            }
         }
 
         public void Separar(string origem,string destino, bool sobrepor)

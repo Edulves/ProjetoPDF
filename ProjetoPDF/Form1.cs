@@ -55,5 +55,11 @@ namespace ProjetoPDF
             }
             
         }
+
+        private void btnRenomear_Click(object sender, EventArgs e)
+        {
+            PDF pdf = new PDF();
+            pdf.Renomear(lblDestino.Text);
+        }
     }
 }

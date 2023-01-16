@@ -90,6 +90,7 @@
             this.btnRenomear.TabIndex = 6;
             this.btnRenomear.Text = "Renomear";
             this.btnRenomear.UseVisualStyleBackColor = true;
+            this.btnRenomear.Click += new System.EventHandler(this.btnRenomear_Click);
             // 
             // btnSeparar
             // 
