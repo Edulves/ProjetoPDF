@@ -53,13 +53,19 @@ namespace ProjetoPDF
             {
                 MessageBox.Show("Por favor, selecione o arquivo de origem e o destino");
             }
-            
         }
 
         private void btnRenomear_Click(object sender, EventArgs e)
         {
             PDF pdf = new PDF();
-            pdf.Renomear(lblDestino.Text);
+            if (lblDestino.Text != "Clique para selecionar a pasta de destino")
+            {
+                pdf.Renomear(lblDestino.Text);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione o destino");
+            }
         }
     }
 }
