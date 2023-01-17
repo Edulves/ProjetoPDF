@@ -131,11 +131,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Juntar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Juntar.Designer.cs">
+      <DependentUpon>Juntar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renomear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Renomear.Designer.cs">
+      <DependentUpon>Renomear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Separar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Separar.Designer.cs">
+      <DependentUpon>Separar.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Juntar.resx">
+      <DependentUpon>Juntar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,6 +176,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Renomear.resx">
+      <DependentUpon>Renomear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Separar.resx">
+      <DependentUpon>Separar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
