@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
+using iText.Kernel.Pdf.Canvas.Parser.Listener;
 
 namespace ProjetoPDF
 {
@@ -18,6 +21,8 @@ namespace ProjetoPDF
         {
             string[] arquivos = Directory.GetFiles(diretorio);
             string dirSaida = $"{desktop}\\PDFsRenomeados";
+            string result = null;
+            int num;
 
             if (!Directory.Exists(dirSaida))
             {
@@ -26,9 +31,38 @@ namespace ProjetoPDF
 
             for (int i = 0; i < arquivos.Length; i++)
             {
+                PdfReader pdfReader = new PdfReader(arquivos[i]);
+                PdfDocument pdfdoc = new PdfDocument(pdfReader);
+
+                for (int x = 1; x <= pdfdoc.GetNumberOfPages(); x++)
+                {
+                    ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
+                    string contedudo = PdfTextExtractor.GetTextFromPage(pdfdoc.GetPage(x), strategy);
+                    result += contedudo;
+                }
+                pdfdoc.Close();
+                pdfReader.Close();
+
+                int acharPedido = result.IndexOf("Número pedido ERP");
+
+                if (int.TryParse(result.Substring(acharPedido - 7, 6), out num))
+                {
+                    result = result.Substring(acharPedido - 7, 6);
+                }
+                else
+                {
+                    acharPedido = result.IndexOf("Número pedido");
+                    result = result.Substring(acharPedido - 7, 6);
+                }
+
+                MessageBox.Show(result);
+
                 FileInfo files = new FileInfo(arquivos[i]);
-                files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name,"teste" + i + ".PDF")));
+                files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name, result + ".pdf")));
+
+                result = "";
             }
+
         }
 
         public void Separar(string origem,string destino, bool sobrepor)
