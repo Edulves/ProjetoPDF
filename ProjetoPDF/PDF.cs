@@ -37,8 +37,8 @@ namespace ProjetoPDF
                 for (int x = 1; x <= pdfdoc.GetNumberOfPages(); x++)
                 {
                     ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
-                    string contedudo = PdfTextExtractor.GetTextFromPage(pdfdoc.GetPage(x), strategy);
-                    result += contedudo;
+                    string conteudo = PdfTextExtractor.GetTextFromPage(pdfdoc.GetPage(x), strategy);
+                    result += conteudo;
                 }
                 pdfdoc.Close();
                 pdfReader.Close();
@@ -55,11 +55,15 @@ namespace ProjetoPDF
                     result = result.Substring(acharPedido - 7, 6);
                 }
 
-                MessageBox.Show(result);
-
-                FileInfo files = new FileInfo(arquivos[i]);
-                files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name, result + ".pdf")));
-
+                try
+                {
+                    FileInfo files = new FileInfo(arquivos[i]);
+                    files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name, result + ".pdf")));
+                }
+                catch (Exception)
+                {
+                }
+                
                 result = "";
             }
 
