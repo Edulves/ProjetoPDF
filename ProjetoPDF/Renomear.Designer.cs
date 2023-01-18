@@ -31,6 +31,7 @@
             this.btnRenomear = new System.Windows.Forms.Button();
             this.lblDestino = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // btnRenomear
@@ -42,6 +43,7 @@
             this.btnRenomear.TabIndex = 16;
             this.btnRenomear.Text = "Renomear";
             this.btnRenomear.UseVisualStyleBackColor = true;
+            this.btnRenomear.Click += new System.EventHandler(this.btnRenomear_Click);
             // 
             // lblDestino
             // 
@@ -52,6 +54,7 @@
             this.lblDestino.Size = new System.Drawing.Size(393, 24);
             this.lblDestino.TabIndex = 15;
             this.lblDestino.Text = "Clique para selecionar a pasta de destino";
+            this.lblDestino.Click += new System.EventHandler(this.lblDestino_Click_1);
             // 
             // label5
             // 
@@ -72,6 +75,7 @@
             this.Controls.Add(this.lblDestino);
             this.Controls.Add(this.label5);
             this.Name = "Renomear";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renomear";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,5 +87,6 @@
         private System.Windows.Forms.Button btnRenomear;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
     }
 }

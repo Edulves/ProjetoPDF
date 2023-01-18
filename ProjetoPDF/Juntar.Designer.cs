@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnRenomear = new System.Windows.Forms.Button();
+            this.btnJuntar = new System.Windows.Forms.Button();
             this.lblDestino = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnRenomear
+            // btnJuntar
             // 
-            this.btnRenomear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenomear.Location = new System.Drawing.Point(379, 79);
-            this.btnRenomear.Name = "btnRenomear";
-            this.btnRenomear.Size = new System.Drawing.Size(147, 51);
-            this.btnRenomear.TabIndex = 19;
-            this.btnRenomear.Text = "Renomear";
-            this.btnRenomear.UseVisualStyleBackColor = true;
+            this.btnJuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJuntar.Location = new System.Drawing.Point(379, 80);
+            this.btnJuntar.Name = "btnJuntar";
+            this.btnJuntar.Size = new System.Drawing.Size(147, 51);
+            this.btnJuntar.TabIndex = 19;
+            this.btnJuntar.Text = "Juntar";
+            this.btnJuntar.UseVisualStyleBackColor = true;
             // 
             // lblDestino
             // 
@@ -68,7 +68,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 158);
-            this.Controls.Add(this.btnRenomear);
+            this.Controls.Add(this.btnJuntar);
             this.Controls.Add(this.lblDestino);
             this.Controls.Add(this.label5);
             this.Name = "Juntar";
@@ -80,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnRenomear;
+        private System.Windows.Forms.Button btnJuntar;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.Label label5;
     }

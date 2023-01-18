@@ -63,7 +63,7 @@ namespace ProjetoPDF
                 catch (Exception)
                 {
                 }
-                
+
                 result = "";
             }
 
@@ -71,6 +71,16 @@ namespace ProjetoPDF
 
         public void Separar(string origem,string destino, bool sobrepor)
         {
+            string[] arquivos = Directory.GetFiles(destino);
+            string dirSaida = $"{desktop}\\PDFs_Separados";
+            string result = null;
+            int num;
+
+            if (!Directory.Exists(dirSaida))
+            {
+                Directory.CreateDirectory(dirSaida);
+            }
+
             if (!File.Exists(destino))
             {
                 File.Copy(origem, destino);

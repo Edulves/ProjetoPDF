@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoPDF
 {
-    public partial class Menu : Form
+    public partial class PrimeiraVersao : Form
     {
-        public Menu()
+        public PrimeiraVersao()
         {
             InitializeComponent();
         }

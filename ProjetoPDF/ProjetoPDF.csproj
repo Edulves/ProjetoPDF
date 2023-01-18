@@ -125,11 +125,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Juntar.cs">
       <SubType>Form</SubType>
@@ -137,11 +137,11 @@
     <Compile Include="Juntar.Designer.cs">
       <DependentUpon>Juntar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="PrimeiraVersao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="PrimeiraVersao.Designer.cs">
+      <DependentUpon>PrimeiraVersao.cs</DependentUpon>
     </Compile>
     <Compile Include="PDF.cs" />
     <Compile Include="Program.cs" />
@@ -158,14 +158,14 @@
     <Compile Include="Separar.Designer.cs">
       <DependentUpon>Separar.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Juntar.resx">
       <DependentUpon>Juntar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="PrimeiraVersao.resx">
+      <DependentUpon>PrimeiraVersao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
