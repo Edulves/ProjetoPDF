@@ -69,31 +69,38 @@ namespace ProjetoPDF
 
         }
 
-        public void Separar(string origem,string destino, bool sobrepor)
+        public void Separar(string origem,string destino, bool sobrepor, string lista)
         {
             string[] arquivos = Directory.GetFiles(destino);
-            string dirSaida = $"{desktop}\\PDFs_Separados";
-            string result = null;
-            int num;
+            string[] Pedidos = lista.Split(','); 
+            string dirSaida = $"{desktop}\\PDFs_Separados\\";
+
+            for (int i = 0; i < Pedidos.Length; i++)
+            {
+                Pedidos[i] = Pedidos[i] + ".pdf";
+            }
 
             if (!Directory.Exists(dirSaida))
             {
                 Directory.CreateDirectory(dirSaida);
             }
 
-            if (!File.Exists(destino))
+            for (int i = 0; i < Pedidos.Length; i++)
             {
-                File.Copy(origem, destino);
-                MessageBox.Show("Copia efetuada");
-            }
-            else
-            {
-                if (MessageBox.Show("Arquivo já existe! \n Deseja sobrepor?", "Copiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (!File.Exists(destino + Pedidos[i]))
                 {
-                    File.Copy(origem, destino, sobrepor);
-                    MessageBox.Show("Copia efetuada");
+                    File.Copy(origem + Pedidos[i], dirSaida + Pedidos[i]);
+                }
+                else
+                {
+                    if (MessageBox.Show("Arquivo já existe! \n Deseja sobrepor?", "Copiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        File.Copy(origem, destino, sobrepor);
+                        MessageBox.Show("Copia efetuada");
+                    }
                 }
             }
+            MessageBox.Show("Copia efetuada");
         }
 
         public void Juntar()

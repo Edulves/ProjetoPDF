@@ -33,10 +33,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblOrigem = new System.Windows.Forms.Label();
-            this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLista = new System.Windows.Forms.TextBox();
+            this.folderBrowser2 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // btnSeparar
@@ -92,10 +92,6 @@
             this.lblOrigem.Text = "Clique para selecionar o arquivo de origem";
             this.lblOrigem.Click += new System.EventHandler(this.lblOrigem_Click_1);
             // 
-            // openFile
-            // 
-            this.openFile.FileName = "openFileDialog1";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,9 +136,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblOrigem;
-        private System.Windows.Forms.OpenFileDialog openFile;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLista;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser2;
     }
 }

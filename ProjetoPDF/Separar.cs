@@ -20,9 +20,9 @@ namespace ProjetoPDF
 
         private void lblOrigem_Click_1(object sender, EventArgs e)
         {
-            if (openFile.ShowDialog() != DialogResult.Cancel)
+            if (folderBrowser2.ShowDialog() != DialogResult.Cancel)
             {
-                lblOrigem.Text = openFile.FileName;
+                lblOrigem.Text = folderBrowser2.SelectedPath;
             }
         }
 
@@ -37,12 +37,12 @@ namespace ProjetoPDF
         private void btnSeparar_Click(object sender, EventArgs e)
         {
             PDF pdf = new PDF();
-            FileInfo origem = new FileInfo(openFile.FileName);
-            if (lblDestino.Text != "Clique para selecionar a pasta de destino" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
+
+            if (/*lblDestino.Text != "Clique para selecionar a pasta de destino" &&*/ lblOrigem.Text != "Clique para selecionar o arquivo de origem")
             {
                 try
                 {
-                    pdf.Separar(openFile.FileName, folderBrowser.SelectedPath + @"\" + origem.Name, true);
+                    pdf.Separar(folderBrowser2.SelectedPath + @"\", folderBrowser.SelectedPath + @"\", true, txtLista.Text);
                 }
                 catch (Exception ex)
                 {
