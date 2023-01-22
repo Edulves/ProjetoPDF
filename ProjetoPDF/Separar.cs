@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Geom;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,22 +12,22 @@ using System.Windows.Forms;
 
 namespace ProjetoPDF
 {
-    public partial class Form1 : Form
+    public partial class Separar : Form
     {
-        public Form1()
+        public Separar()
         {
             InitializeComponent();
         }
 
-        private void lblOrigem_Click(object sender, EventArgs e)
+        private void lblOrigem_Click_1(object sender, EventArgs e)
         {
-            if (openFile.ShowDialog() != DialogResult.Cancel)
+            if (folderBrowser2.ShowDialog() != DialogResult.Cancel)
             {
-                lblOrigem.Text = openFile.FileName;
+                lblOrigem.Text = folderBrowser2.SelectedPath;
             }
         }
 
-        private void lblDestino_Click(object sender, EventArgs e)
+        private void lblDestino_Click_1(object sender, EventArgs e)
         {
             if (folderBrowser.ShowDialog() != DialogResult.Cancel)
             {
@@ -37,13 +38,12 @@ namespace ProjetoPDF
         private void btnSeparar_Click(object sender, EventArgs e)
         {
             PDF pdf = new PDF();
-            FileInfo origem = new FileInfo(openFile.FileName);
-            if (lblDestino.Text != "Clique para selecionar a pasta de destino" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
+
+            if (/*lblDestino.Text != "Clique para selecionar a pasta de destino" &&*/ txtLista.Text != "" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
             {
                 try
                 {
-                    pdf.Separar(openFile.FileName, folderBrowser.SelectedPath + @"\" + origem.Name);
-                    MessageBox.Show("Copia efetuada");
+                    pdf.Separar(folderBrowser2.SelectedPath + @"\", folderBrowser.SelectedPath + @"\", true, txtLista.Text);
                 }
                 catch (Exception ex)
                 {
@@ -52,9 +52,8 @@ namespace ProjetoPDF
             }
             else
             {
-                MessageBox.Show("Por favor, selecione o arquivo de origem e o destino");
+                MessageBox.Show("Por favor, selecione o caminho de origem onde estão os arquivos e a lista de arquivos que deseja separar.");
             }
-            
         }
     }
 }
