@@ -74,11 +74,10 @@ namespace ProjetoPDF
 
         public void Separar(string origem, string destino, bool sobrepor, string lista)
         {
+            lista = lista.Replace(" ", "");
             string[] arquivos = Directory.GetFiles(destino);
             string[] Pedidos = lista.Split(',');
-            string dirSaida = $"{desktop}\\PDFs_Separados\\";
-            MessageBox.Show(dirSaida + Pedidos[0].ToString());
-
+            string dirSaida = desktop + @"\PDFs Separados\";
 
             for (int i = 0; i < Pedidos.Length; i++)
             {
@@ -92,37 +91,20 @@ namespace ProjetoPDF
 
             for (int i = 0; i < Pedidos.Length; i++)
             {
-                if (destino != null)
+                try
                 {
-                    if (!File.Exists(destino + Pedidos[i]))
+                    if (destino != @"\")
                     {
-                        File.Copy(origem + Pedidos[i], destino + Pedidos[i]);
+                        File.Copy(origem + Pedidos[i], destino + Pedidos[i], sobrepor);
                     }
                     else
                     {
-                        if (MessageBox.Show("Arquivo já existe! \n Deseja sobrepor?", "Copiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            File.Copy(origem + Pedidos[i], destino + Pedidos[i], sobrepor);
-                            MessageBox.Show("Sobreposição efetuada");
-                        }
+                        File.Copy(origem + Pedidos[i], dirSaida + Pedidos[i], sobrepor);
                     }
                 }
-                else
+                catch
                 {
-                    if (!File.Exists(dirSaida + Pedidos[i]))
-                    {
-                        File.Copy(origem + Pedidos[i], dirSaida + Pedidos[i]);
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("Arquivo já existe! \n Deseja sobrepor?", "Copiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            File.Copy(origem + Pedidos[i], dirSaida + Pedidos[i], sobrepor);
-                            MessageBox.Show("Sobreposição efetuada");
-                        }
-                    }
                 }
-
             }
             MessageBox.Show("Copia efetuada");
         }

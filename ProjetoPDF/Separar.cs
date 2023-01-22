@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Geom;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,7 +39,7 @@ namespace ProjetoPDF
         {
             PDF pdf = new PDF();
 
-            if (/*lblDestino.Text != "Clique para selecionar a pasta de destino" &&*/ lblOrigem.Text != "Clique para selecionar o arquivo de origem")
+            if (/*lblDestino.Text != "Clique para selecionar a pasta de destino" &&*/ txtLista.Text != "" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
             {
                 try
                 {
@@ -51,7 +52,7 @@ namespace ProjetoPDF
             }
             else
             {
-                MessageBox.Show("Por favor, selecione o arquivo de origem e o destino");
+                MessageBox.Show("Por favor, selecione o caminho de origem onde estão os arquivos e a lista de arquivos que deseja separar.");
             }
         }
     }
