@@ -31,6 +31,7 @@
             this.btnJuntar = new System.Windows.Forms.Button();
             this.lblDestino = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // btnJuntar
@@ -42,6 +43,7 @@
             this.btnJuntar.TabIndex = 19;
             this.btnJuntar.Text = "Juntar";
             this.btnJuntar.UseVisualStyleBackColor = true;
+            this.btnJuntar.Click += new System.EventHandler(this.btnJuntar_Click);
             // 
             // lblDestino
             // 
@@ -52,6 +54,7 @@
             this.lblDestino.Size = new System.Drawing.Size(393, 24);
             this.lblDestino.TabIndex = 18;
             this.lblDestino.Text = "Clique para selecionar a pasta de destino";
+            this.lblDestino.Click += new System.EventHandler(this.lblDestino_Click);
             // 
             // label5
             // 
@@ -72,6 +75,7 @@
             this.Controls.Add(this.lblDestino);
             this.Controls.Add(this.label5);
             this.Name = "Juntar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Juntar";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,5 +87,6 @@
         private System.Windows.Forms.Button btnJuntar;
         private System.Windows.Forms.Label lblDestino;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
     }
 }

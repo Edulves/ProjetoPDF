@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
+using iText.Kernel.Utils;
 
 namespace ProjetoPDF
 {
@@ -15,6 +13,35 @@ namespace ProjetoPDF
     {
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+        public byte[] Combine(IEnumerable<byte[]> pdfs)
+        {
+            using (var writerMemoryStream = new MemoryStream())
+            {
+                using (var writer = new PdfWriter(writerMemoryStream))
+                {
+                    using (var mergedDocument = new PdfDocument(writer))
+                    {
+                        var merger = new PdfMerger(mergedDocument);
+
+                        foreach (var pdfBytes in pdfs)
+                        {
+                            using (var copyFromMemoryStream = new MemoryStream(pdfBytes))
+                            {
+                                using (var reader = new PdfReader(copyFromMemoryStream))
+                                {
+                                    using (var copyFromDocument = new PdfDocument(reader))
+                                    {
+                                        merger.Merge(copyFromDocument, 1, copyFromDocument.GetNumberOfPages());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return writerMemoryStream.ToArray();
+            }
+        }
         public void Renomear(string diretorio)
         {
             string[] arquivos = Directory.GetFiles(diretorio);
@@ -93,9 +120,18 @@ namespace ProjetoPDF
             MessageBox.Show("Copia efetuada");
         }
 
-        public void Juntar()
+        public void Juntar(string diretorio)
         {
+            DirectoryInfo destino = new DirectoryInfo(diretorio);
 
+            var pdfList = new List<byte[]> { };
+
+            foreach (var file in destino.GetFiles("*.pdf"))
+            {
+                pdfList.Add(File.ReadAllBytes(file.FullName));
+            }
+
+            File.WriteAllBytes(diretorio + "\\PDFsUnidos.pdf", Combine(pdfList));
         }
     }
 }

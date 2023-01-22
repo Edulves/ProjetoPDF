@@ -86,5 +86,13 @@ namespace ProjetoPDF
             separar.ShowDialog();
             Show();
         }
+
+        private void btnJuntar_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Juntar separar = new Juntar();
+            separar.ShowDialog();
+            Show();
+        }
     }
 }

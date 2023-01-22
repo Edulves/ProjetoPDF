@@ -16,5 +16,26 @@ namespace ProjetoPDF
         {
             InitializeComponent();
         }
+
+        private void lblDestino_Click(object sender, EventArgs e)
+        {
+            if (folderBrowser.ShowDialog() != DialogResult.Cancel)
+            {
+                lblDestino.Text = folderBrowser.SelectedPath;
+            }
+        }
+
+        private void btnJuntar_Click(object sender, EventArgs e)
+        {
+            PDF pdf = new PDF();
+            if (lblDestino.Text != "Clique para selecionar a pasta de destino")
+            {
+                pdf.Juntar(lblDestino.Text);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione o destino");
+            }
+        }
     }
 }
