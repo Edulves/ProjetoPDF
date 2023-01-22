@@ -20,14 +20,8 @@ namespace ProjetoPDF
         public void Renomear(string diretorio)
         {
             string[] arquivos = Directory.GetFiles(diretorio);
-            string dirSaida = $"{desktop}\\PDFsRenomeados";
             string result = null;
             int num;
-
-            if (!Directory.Exists(dirSaida))
-            {
-                Directory.CreateDirectory(dirSaida);
-            }
 
             for (int i = 0; i < arquivos.Length; i++)
             {
@@ -58,7 +52,16 @@ namespace ProjetoPDF
                 try
                 {
                     FileInfo files = new FileInfo(arquivos[i]);
-                    files.CopyTo(Path.Combine(dirSaida, files.Name.Replace(files.Name, result + ".pdf")));
+                    files.CopyTo(Path.Combine(diretorio, files.Name.Replace(files.Name, result + ".pdf")));
+                }
+                catch (Exception)
+                {
+                }
+
+                try
+                {
+                    FileInfo files = new FileInfo(arquivos[i]);
+                    files.Delete();
                 }
                 catch (Exception)
                 {
