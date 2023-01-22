@@ -13,8 +13,6 @@ namespace ProjetoPDF
 {
     class PDF
     {
-        //private List<string> Pedidos;
-        //private string pedido;
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public void Renomear(string diretorio)
