@@ -51,17 +51,9 @@ namespace ProjetoPDF
                 {
                     FileInfo files = new FileInfo(arquivos[i]);
                     files.CopyTo(Path.Combine(diretorio, files.Name.Replace(files.Name, result + ".pdf")));
-                }
-                catch (Exception)
-                {
-                }
-
-                try
-                {
-                    FileInfo files = new FileInfo(arquivos[i]);
                     files.Delete();
                 }
-                catch (Exception)
+                catch
                 {
                 }
 
@@ -73,14 +65,8 @@ namespace ProjetoPDF
         public void Separar(string origem, string destino, bool sobrepor, string lista)
         {
             lista = lista.Replace(" ", "");
-            string[] arquivos = Directory.GetFiles(destino);
             string[] Pedidos = lista.Split(',');
             string dirSaida = desktop + @"\PDFs Separados\";
-
-            for (int i = 0; i < Pedidos.Length; i++)
-            {
-                Pedidos[i] = Pedidos[i] + ".pdf";
-            }
 
             if (!Directory.Exists(dirSaida))
             {
@@ -93,11 +79,11 @@ namespace ProjetoPDF
                 {
                     if (destino != @"\")
                     {
-                        File.Copy(origem + Pedidos[i], destino + Pedidos[i], sobrepor);
+                        File.Copy(origem + Pedidos[i] + ".pdf", destino + Pedidos[i] + ".pdf", sobrepor);
                     }
                     else
                     {
-                        File.Copy(origem + Pedidos[i], dirSaida + Pedidos[i], sobrepor);
+                        File.Copy(origem + Pedidos[i] + ".pdf", dirSaida + Pedidos[i] + ".pdf", sobrepor);
                     }
                 }
                 catch
