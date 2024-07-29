@@ -30,7 +30,6 @@
         {
             this.btnRenomear = new System.Windows.Forms.Button();
             this.btnSeparar = new System.Windows.Forms.Button();
-            this.btnJuntar = new System.Windows.Forms.Button();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +38,7 @@
             // btnRenomear
             // 
             this.btnRenomear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenomear.Location = new System.Drawing.Point(41, 80);
+            this.btnRenomear.Location = new System.Drawing.Point(107, 80);
             this.btnRenomear.Name = "btnRenomear";
             this.btnRenomear.Size = new System.Drawing.Size(147, 51);
             this.btnRenomear.TabIndex = 6;
@@ -50,24 +49,13 @@
             // btnSeparar
             // 
             this.btnSeparar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeparar.Location = new System.Drawing.Point(209, 80);
+            this.btnSeparar.Location = new System.Drawing.Point(326, 80);
             this.btnSeparar.Name = "btnSeparar";
             this.btnSeparar.Size = new System.Drawing.Size(147, 51);
             this.btnSeparar.TabIndex = 7;
             this.btnSeparar.Text = "Separar";
             this.btnSeparar.UseVisualStyleBackColor = true;
             this.btnSeparar.Click += new System.EventHandler(this.btnSeparar_Click);
-            // 
-            // btnJuntar
-            // 
-            this.btnJuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJuntar.Location = new System.Drawing.Point(377, 80);
-            this.btnJuntar.Name = "btnJuntar";
-            this.btnJuntar.Size = new System.Drawing.Size(147, 51);
-            this.btnJuntar.TabIndex = 8;
-            this.btnJuntar.Text = "Juntar";
-            this.btnJuntar.UseVisualStyleBackColor = true;
-            this.btnJuntar.Click += new System.EventHandler(this.btnJuntar_Click);
             // 
             // openFile
             // 
@@ -94,7 +82,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 145);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnJuntar);
             this.Controls.Add(this.btnSeparar);
             this.Controls.Add(this.btnRenomear);
             this.Name = "MainMenu";
@@ -107,7 +94,6 @@
         #endregion
         private System.Windows.Forms.Button btnRenomear;
         private System.Windows.Forms.Button btnSeparar;
-        private System.Windows.Forms.Button btnJuntar;
         private System.Windows.Forms.OpenFileDialog openFile;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser;
         private System.Windows.Forms.Label label1;

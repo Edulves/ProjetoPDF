@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
@@ -13,39 +14,40 @@ namespace ProjetoPDF
     {
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        public byte[] Combine(IEnumerable<byte[]> pdfs)
-        {
-            using (var writerMemoryStream = new MemoryStream())
-            {
-                using (var writer = new PdfWriter(writerMemoryStream))
-                {
-                    using (var mergedDocument = new PdfDocument(writer))
-                    {
-                        var merger = new PdfMerger(mergedDocument);
+        //public byte[] Combine(IEnumerable<byte[]> pdfs)
+        //{
+        //    using (var writerMemoryStream = new MemoryStream())
+        //    {
+        //        using (var writer = new PdfWriter(writerMemoryStream))
+        //        {
+        //            using (var mergedDocument = new PdfDocument(writer))
+        //            {
+        //                var merger = new PdfMerger(mergedDocument);
 
-                        foreach (var pdfBytes in pdfs)
-                        {
-                            using (var copyFromMemoryStream = new MemoryStream(pdfBytes))
-                            {
-                                using (var reader = new PdfReader(copyFromMemoryStream))
-                                {
-                                    using (var copyFromDocument = new PdfDocument(reader))
-                                    {
-                                        merger.Merge(copyFromDocument, 1, copyFromDocument.GetNumberOfPages());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+        //                foreach (var pdfBytes in pdfs)
+        //                {
+        //                    using (var copyFromMemoryStream = new MemoryStream(pdfBytes))
+        //                    {
+        //                        using (var reader = new PdfReader(copyFromMemoryStream))
+        //                        {
+        //                            using (var copyFromDocument = new PdfDocument(reader))
+        //                            {
+        //                                merger.Merge(copyFromDocument, 1, copyFromDocument.GetNumberOfPages());
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
 
-                return writerMemoryStream.ToArray();
-            }
-        }
+        //        return writerMemoryStream.ToArray();
+        //    }
+        //}
         public void Renomear(string diretorio)
         {
             string[] arquivos = Directory.GetFiles(diretorio);
             string result = null;
+            string validação = null;
             int num;
 
             for (int i = 0; i < arquivos.Length; i++)
@@ -64,29 +66,44 @@ namespace ProjetoPDF
 
                 int acharPedido = result.IndexOf("Número pedido ERP");
 
-                if (int.TryParse(result.Substring(acharPedido - 7, 6), out num))
-                {
-                    result = result.Substring(acharPedido - 7, 6);
-                }
-                else
+                validação = result.Substring(acharPedido - 7, 6).Trim().Length <= 6 ? result.Substring(acharPedido - 7, 6) : "false";
+
+                if (validação.Contains(":"))
                 {
                     acharPedido = result.IndexOf("Número pedido");
                     result = result.Substring(acharPedido - 7, 6);
                 }
-
-                try
+                else
                 {
-                    FileInfo files = new FileInfo(arquivos[i]);
-                    files.CopyTo(Path.Combine(diretorio, files.Name.Replace(files.Name, result + ".pdf")));
+                    result = validação;
+                }
+
+                FileInfo files = new FileInfo(arquivos[i]);
+
+                var nomeArquivo = files.Name.Replace(files.Name, result + ".pdf");
+
+                if (!File.Exists(Path.Combine(diretorio, nomeArquivo)))
+                {
+                    files.CopyTo(Path.Combine(diretorio, nomeArquivo));
                     files.Delete();
+                    result = "";
                 }
-                catch
+                else if (!files.Name.Contains(result))
                 {
+                    var Pedidorepetido = 1;
+                    while(File.Exists(Path.Combine(diretorio, nomeArquivo)))
+                    {
+                        nomeArquivo = files.Name.Replace(files.Name, result + " - " + Pedidorepetido + ".pdf");
+                        Pedidorepetido++;
+                    } 
+                    files.CopyTo(Path.Combine(diretorio, nomeArquivo));
+                    files.Delete();
+                    result = "";
                 }
 
-                result = "";
             }
 
+            MessageBox.Show("Pedidos renomeados com sucesso!");
         }
 
         public void Separar(string origem, string destino, bool sobrepor, string lista)
@@ -94,44 +111,42 @@ namespace ProjetoPDF
             lista = lista.Replace(" ", "");
             string[] Pedidos = lista.Split(',');
             string dirSaida = desktop + @"\PDFs Separados\";
-
-            if (!Directory.Exists(dirSaida))
-            {
-                Directory.CreateDirectory(dirSaida);
-            }
+            List<string> pedidosNaoEncotrados = new List<string>();
+  
 
             for (int i = 0; i < Pedidos.Length; i++)
             {
-                try
+                if (destino != @"\" && File.Exists(Path.Combine(origem, Pedidos[i] + ".pdf")))
                 {
-                    if (destino != @"\")
-                    {
-                        File.Copy(origem + Pedidos[i] + ".pdf", destino + Pedidos[i] + ".pdf", sobrepor);
-                    }
-                    else
-                    {
-                        File.Copy(origem + Pedidos[i] + ".pdf", dirSaida + Pedidos[i] + ".pdf", sobrepor);
-                    }
+                    File.Copy(origem + Pedidos[i] + ".pdf", destino + Pedidos[i] + ".pdf", sobrepor);
                 }
-                catch
+                else
                 {
+                    pedidosNaoEncotrados.Add(Pedidos[i]);
                 }
             }
-            MessageBox.Show("Copia efetuada");
+
+            string mensgem = String.Join(", ", pedidosNaoEncotrados);
+
+            if (pedidosNaoEncotrados.Count() == 0)
+                MessageBox.Show("Copia efetuada");
+            else
+                MessageBox.Show($"Copia efetuada, porém os seguinte pedidos não foram encontrados: {mensgem}");
+
         }
 
-        public void Juntar(string diretorio)
-        {
-            DirectoryInfo destino = new DirectoryInfo(diretorio);
+        //public void Juntar(string diretorio)
+        //{
+        //    DirectoryInfo destino = new DirectoryInfo(diretorio);
 
-            var pdfList = new List<byte[]> { };
+        //    var pdfList = new List<byte[]> { };
 
-            foreach (var file in destino.GetFiles("*.pdf"))
-            {
-                pdfList.Add(File.ReadAllBytes(file.FullName));
-            }
+        //    foreach (var file in destino.GetFiles("*.pdf"))
+        //    {
+        //        pdfList.Add(File.ReadAllBytes(file.FullName));
+        //    }
 
-            File.WriteAllBytes(diretorio + "\\PDFsUnidos.pdf", Combine(pdfList));
-        }
+        //    File.WriteAllBytes(diretorio + "\\PDFsUnidos.pdf", Combine(pdfList));
+        //}
     }
 }

@@ -39,7 +39,7 @@ namespace ProjetoPDF
         {
             PDF pdf = new PDF();
 
-            if (/*lblDestino.Text != "Clique para selecionar a pasta de destino" &&*/ txtLista.Text != "" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
+            if (lblDestino.Text != "Clique para selecionar a pasta de destino" && txtLista.Text != "" && lblOrigem.Text != "Clique para selecionar o arquivo de origem")
             {
                 try
                 {
@@ -52,7 +52,7 @@ namespace ProjetoPDF
             }
             else
             {
-                MessageBox.Show("Por favor, selecione o caminho de origem onde estão os arquivos e a lista de arquivos que deseja separar.");
+                MessageBox.Show("Por favor, selecione o caminho de origem e destino dos arquivos e a lista de arquivos que deseja separar.");
             }
         }
     }
