@@ -37,7 +37,7 @@
             // btnRenomear
             // 
             this.btnRenomear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenomear.Location = new System.Drawing.Point(379, 79);
+            this.btnRenomear.Location = new System.Drawing.Point(379, 95);
             this.btnRenomear.Name = "btnRenomear";
             this.btnRenomear.Size = new System.Drawing.Size(147, 51);
             this.btnRenomear.TabIndex = 16;
@@ -49,9 +49,9 @@
             // 
             this.lblDestino.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDestino.Location = new System.Drawing.Point(133, 28);
+            this.lblDestino.Location = new System.Drawing.Point(39, 49);
             this.lblDestino.Name = "lblDestino";
-            this.lblDestino.Size = new System.Drawing.Size(393, 24);
+            this.lblDestino.Size = new System.Drawing.Size(487, 24);
             this.lblDestino.TabIndex = 15;
             this.lblDestino.Text = "Clique para selecionar a pasta de destino";
             this.lblDestino.Click += new System.EventHandler(this.lblDestino_Click_1);
@@ -60,11 +60,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 28);
+            this.label5.Location = new System.Drawing.Point(39, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 24);
+            this.label5.Size = new System.Drawing.Size(142, 24);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Destino";
+            this.label5.Text = "Local dos PDFs";
             // 
             // Renomear
             // 

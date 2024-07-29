@@ -36,14 +36,14 @@
             // 
             // btnJuntar
             // 
-            this.btnJuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJuntar.Location = new System.Drawing.Point(379, 80);
-            this.btnJuntar.Name = "btnJuntar";
-            this.btnJuntar.Size = new System.Drawing.Size(147, 51);
-            this.btnJuntar.TabIndex = 19;
-            this.btnJuntar.Text = "Juntar";
-            this.btnJuntar.UseVisualStyleBackColor = true;
-            this.btnJuntar.Click += new System.EventHandler(this.btnJuntar_Click);
+            //this.btnJuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnJuntar.Location = new System.Drawing.Point(379, 80);
+            //this.btnJuntar.Name = "btnJuntar";
+            //this.btnJuntar.Size = new System.Drawing.Size(147, 51);
+            //this.btnJuntar.TabIndex = 19;
+            //this.btnJuntar.Text = "Juntar";
+            //this.btnJuntar.UseVisualStyleBackColor = true;
+            //this.btnJuntar.Click += new System.EventHandler(this.btnJuntar_Click);
             // 
             // lblDestino
             // 

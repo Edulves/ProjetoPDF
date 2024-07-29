@@ -29,7 +29,15 @@ namespace ProjetoPDF
             PDF pdf = new PDF();
             if (lblDestino.Text != "Clique para selecionar a pasta de destino")
             {
-                pdf.Renomear(lblDestino.Text);
+                try
+                {
+                    pdf.Renomear(lblDestino.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao tentar salvar o arquivo." + ex.Message);
+                }
+               
             }
             else
             {
