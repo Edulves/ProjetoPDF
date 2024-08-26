@@ -43,7 +43,7 @@ namespace ProjetoPDF
             {
                 try
                 {
-                    pdf.Separar(folderBrowser2.SelectedPath + @"\", folderBrowser.SelectedPath + @"\", true, txtLista.Text);
+                    TextBoxSeparar.Text = pdf.Separar(folderBrowser2.SelectedPath + @"\", folderBrowser.SelectedPath + @"\", true, txtLista.Text);
                 }
                 catch (Exception ex)
                 {

@@ -7,6 +7,7 @@ using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
 using iText.Kernel.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoPDF
 {
@@ -95,7 +96,7 @@ namespace ProjetoPDF
                     {
                         nomeArquivo = files.Name.Replace(files.Name, result + " - " + Pedidorepetido + ".pdf");
                         Pedidorepetido++;
-                    } 
+                    }
                     files.CopyTo(Path.Combine(diretorio, nomeArquivo));
                     files.Delete();
                     result = "";
@@ -106,7 +107,7 @@ namespace ProjetoPDF
             MessageBox.Show("Pedidos renomeados com sucesso!");
         }
 
-        public void Separar(string origem, string destino, bool sobrepor, string lista)
+        public string Separar(string origem, string destino, bool sobrepor, string lista)
         {
             lista = lista.Replace(" ", "");
             string[] Pedidos = lista.Split(',');
@@ -131,8 +132,12 @@ namespace ProjetoPDF
             if (pedidosNaoEncotrados.Count() == 0)
                 MessageBox.Show("Copia efetuada");
             else
+            {
                 MessageBox.Show($"Copia efetuada, porém os seguinte pedidos não foram encontrados: {mensgem}");
-
+                return mensgem;
+            }
+                
+            return "";
         }
 
         //public void Juntar(string diretorio)

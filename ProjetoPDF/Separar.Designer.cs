@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLista = new System.Windows.Forms.TextBox();
             this.folderBrowser2 = new System.Windows.Forms.FolderBrowserDialog();
+            this.TextBoxSeparar = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnSeparar
@@ -109,11 +110,21 @@
             this.txtLista.Size = new System.Drawing.Size(394, 20);
             this.txtLista.TabIndex = 26;
             // 
+            // TextBoxSeparar
+            // 
+            this.TextBoxSeparar.Location = new System.Drawing.Point(43, 152);
+            this.TextBoxSeparar.Name = "TextBoxSeparar";
+            this.TextBoxSeparar.ReadOnly = true;
+            this.TextBoxSeparar.Size = new System.Drawing.Size(483, 136);
+            this.TextBoxSeparar.TabIndex = 0;
+            this.TextBoxSeparar.Text = "";
+            // 
             // Separar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 158);
+            this.ClientSize = new System.Drawing.Size(564, 300);
+            this.Controls.Add(this.TextBoxSeparar);
             this.Controls.Add(this.txtLista);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
@@ -140,5 +151,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLista;
         private System.Windows.Forms.FolderBrowserDialog folderBrowser2;
+        private System.Windows.Forms.RichTextBox TextBoxSeparar;
     }
 }
