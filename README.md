@@ -28,10 +28,6 @@ Este projeto em C# é uma ferramenta de automação que facilita a organização
 - .NET Framework instalado.
 - iTextSharp disponível através do NuGet.
 
-## Instalação e Uso
-
-Instruções detalhadas para a instalação e uso da ferramenta serão fornecidas no arquivo `README.md` do repositório. **(TO DO)**
-
 ## Contribuições
 
 Contribuições são bem-vindas! Se você tiver ideias para melhorar a ferramenta ou quiser reportar um bug, por favor, abra uma _issue_ ou envie um _pull request_ ou ainda no meu linkedin **https://www.linkedin.com/in/eduardo-alves-palmeira-da-silva-205bb81b8/**.
